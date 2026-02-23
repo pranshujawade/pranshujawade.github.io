@@ -1,0 +1,62 @@
+---
+import Layout from '@components/layout/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const caseStudies = (await getCollection('case-studies'))
+  .sort((a, b) => a.data.sortOrder - b.data.sortOrder);
+---
+
+<Layout
+  title="Case Studies"
+  description="Detailed breakdowns of projects I've led, the challenges faced, and the results delivered."
+>
+  <section class="py-12 sm:py-16">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold tracking-tight text-text sm:text-4xl">Case Studies</h1>
+      <p class="mt-2 text-text-secondary">
+        Detailed breakdowns of projects I've led, the challenges faced, and the results delivered.
+      </p>
+
+      {caseStudies.length > 0 ? (
+        <div class="mt-12 grid gap-6 sm:grid-cols-2">
+          {caseStudies.map((study) => (
+            <a
+              href={`/case-studies/${study.id.replace(/\.mdx?$/, '')}`}
+              class="group rounded-xl border border-border bg-bg-surface p-6 transition-all hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5"
+            >
+              <div class="flex items-start justify-between">
+                <div>
+                  <h2 class="text-lg font-semibold text-text group-hover:text-accent transition-colors">
+                    {study.data.title}
+                  </h2>
+                  <p class="mt-1 text-sm text-accent">{study.data.role}</p>
+                </div>
+                <span class="text-xs text-text-secondary">{study.data.duration}</span>
+              </div>
+              <p class="mt-3 text-sm leading-relaxed text-text-secondary line-clamp-2">
+                {study.data.tagline}
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                {study.data.technologies.slice(0, 5).map((tech) => (
+                  <span class="rounded-md bg-bg px-2 py-0.5 text-xs text-text-secondary border border-border">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              {study.data.results && study.data.results.length > 0 && (
+                <div class="mt-4 flex items-center gap-1 text-xs text-accent">
+                  <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
+                  </svg>
+                  {study.data.results[0]}
+                </div>
+              )}
+            </a>
+          ))}
+        </div>
+      ) : (
+        <p class="mt-12 text-text-secondary">Case studies coming soon.</p>
+      )}
+    </div>
+  </section>
+</Layout>

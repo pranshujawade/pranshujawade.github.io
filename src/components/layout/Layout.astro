@@ -1,0 +1,44 @@
+---
+import BaseHead from '@components/layout/BaseHead.astro';
+import Header from '@components/layout/Header.astro';
+import Footer from '@components/layout/Footer.astro';
+import ThemeToggle from '@components/ui/ThemeToggle.astro';
+import '@styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  canonical?: string;
+  type?: 'website' | 'article';
+  publishDate?: Date;
+  updatedDate?: Date;
+}
+
+const { title, description, image, canonical, type, publishDate, updatedDate } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title={title}
+      description={description}
+      image={image}
+      canonical={canonical}
+      type={type}
+      publishDate={publishDate}
+      updatedDate={updatedDate}
+    />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <Header>
+      <ThemeToggle slot="theme-toggle" />
+    </Header>
+    <main id="main-content" class="flex-1 pt-[73px]">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,52 @@
+---
+title: "Building Scalable APIs with TypeScript"
+description: "Practical patterns for building maintainable and type-safe backend services with Node.js and TypeScript."
+pubDate: 2026-02-23
+tags: ["typescript", "nodejs", "api", "backend"]
+draft: false
+featured: true
+---
+
+Building APIs that scale is more about making the right architectural decisions early than throwing hardware at the problem. In this post, I'll share practical patterns I've used to build maintainable backend services.
+
+## Why TypeScript for APIs?
+
+TypeScript brings compile-time safety to your API layer. When your request handlers, middleware, and data models all share the same type system, entire categories of bugs disappear before your code ever runs.
+
+## Key Patterns
+
+### 1. Request Validation at the Boundary
+
+Always validate incoming data at the edge of your system. Libraries like Zod make this straightforward:
+
+```typescript
+import { z } from 'zod';
+
+const CreateUserSchema = z.object({
+  email: z.string().email(),
+  name: z.string().min(1).max(100),
+  role: z.enum(['admin', 'user']),
+});
+
+type CreateUserInput = z.infer<typeof CreateUserSchema>;
+```
+
+### 2. Repository Pattern for Data Access
+
+Separate your data access logic from your business logic. This makes testing easier and allows you to swap databases without rewriting your application.
+
+```typescript
+interface UserRepository {
+  findById(id: string): Promise<User | null>;
+  create(input: CreateUserInput): Promise<User>;
+  update(id: string, input: Partial<User>): Promise<User>;
+}
+```
+
+### 3. Error Handling Strategy
+
+Use custom error classes and a centralized error handler. Never leak internal errors to API consumers.
+
+## Conclusion
+
+These patterns have served me well across multiple production systems. The key is consistency -- pick patterns that work for your team and apply them uniformly across your codebase.

@@ -1,0 +1,9 @@
+{
+  "email": "hello@pranshujawade.dev",
+  "links": [
+    { "label": "GitHub", "url": "https://github.com/pranshujawade" },
+    { "label": "LinkedIn", "url": "https://linkedin.com/in/pranshujawade" },
+    { "label": "Dev.to", "url": "https://dev.to/pranshujawade" },
+    { "label": "Hashnode", "url": "https://hashnode.com/@pranshujawade" }
+  ]
+}

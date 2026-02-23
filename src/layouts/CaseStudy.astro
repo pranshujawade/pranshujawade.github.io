@@ -1,0 +1,109 @@
+---
+import Layout from '@components/layout/Layout.astro';
+import { type CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'case-studies'>;
+}
+
+const { entry } = Astro.props;
+const { title, tagline, technologies, role, duration, liveUrl, githubUrl, results } = entry.data;
+const { Content } = await entry.render();
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://pranshujawade.github.io';
+---
+
+<Layout
+  title={title}
+  description={tagline}
+>
+  <!-- JSON-LD Structured Data -->
+  <script is:inline type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: title,
+    description: tagline,
+    author: { '@type': 'Person', name: 'Pranshu Jawade', url: siteUrl },
+  })} />
+
+  <article class="py-12 sm:py-16">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+      <!-- Header -->
+      <header class="mb-10">
+        <a href="/case-studies" class="text-sm font-medium text-accent hover:text-accent-hover">
+          &larr; All Case Studies
+        </a>
+        <h1 class="mt-6 text-3xl font-bold tracking-tight text-text sm:text-4xl">
+          {title}
+        </h1>
+        <p class="mt-4 text-lg text-text-secondary">
+          {tagline}
+        </p>
+
+        <!-- Meta -->
+        <div class="mt-6 grid gap-4 rounded-xl border border-border bg-bg-surface p-6 sm:grid-cols-2">
+          <div>
+            <p class="text-xs font-medium tracking-wider text-text-secondary uppercase">Role</p>
+            <p class="mt-1 text-sm font-medium text-text">{role}</p>
+          </div>
+          <div>
+            <p class="text-xs font-medium tracking-wider text-text-secondary uppercase">Duration</p>
+            <p class="mt-1 text-sm font-medium text-text">{duration}</p>
+          </div>
+          <div class="sm:col-span-2">
+            <p class="text-xs font-medium tracking-wider text-text-secondary uppercase">Technologies</p>
+            <div class="mt-2 flex flex-wrap gap-2">
+              {technologies.map((tech) => (
+                <span class="rounded-md bg-bg px-3 py-1 text-xs font-medium text-text-secondary border border-border">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+          {(liveUrl || githubUrl) && (
+            <div class="flex gap-3 sm:col-span-2">
+              {liveUrl && (
+                <a href={liveUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-medium text-accent hover:text-accent-hover">
+                  Live Demo &rarr;
+                </a>
+              )}
+              {githubUrl && (
+                <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-medium text-accent hover:text-accent-hover">
+                  Source Code &rarr;
+                </a>
+              )}
+            </div>
+          )}
+        </div>
+      </header>
+
+      <!-- Results Banner -->
+      {results && results.length > 0 && (
+        <div class="mb-10 rounded-xl border border-accent/20 bg-accent/5 p-6">
+          <h2 class="text-sm font-medium tracking-wider text-accent uppercase">Key Results</h2>
+          <ul class="mt-3 space-y-2">
+            {results.map((result) => (
+              <li class="flex items-start gap-2 text-sm text-text">
+                <svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                {result}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none">
+        <Content />
+      </div>
+
+      <!-- Footer -->
+      <footer class="mt-16 border-t border-border pt-8">
+        <a href="/case-studies" class="text-sm font-medium text-accent hover:text-accent-hover">
+          &larr; Back to all case studies
+        </a>
+      </footer>
+    </div>
+  </article>
+</Layout>

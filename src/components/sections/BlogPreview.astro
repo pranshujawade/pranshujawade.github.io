@@ -1,0 +1,72 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+---
+
+<section id="blog" class="py-20 sm:py-24 bg-bg-surface">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="flex items-end justify-between">
+      <div>
+        <h2 class="text-sm font-medium tracking-wider text-accent uppercase">Blog</h2>
+        <p class="mt-2 text-3xl font-bold tracking-tight text-text">
+          Latest Posts
+        </p>
+      </div>
+      {posts.length > 0 && (
+        <a href="/blog" class="hidden text-sm font-medium text-accent hover:text-accent-hover sm:block">
+          View all posts &rarr;
+        </a>
+      )}
+    </div>
+
+    {posts.length > 0 ? (
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {posts.map((post) => (
+          <a
+            href={`/blog/${post.id.replace(/\.mdx?$/, '')}`}
+            class="group rounded-xl border border-border bg-bg p-6 transition-all hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5"
+          >
+            <time datetime={post.data.pubDate.toISOString()} class="text-xs text-text-secondary">
+              {formatDate(post.data.pubDate)}
+            </time>
+            <h3 class="mt-2 text-lg font-semibold text-text group-hover:text-accent transition-colors line-clamp-2">
+              {post.data.title}
+            </h3>
+            <p class="mt-2 text-sm leading-relaxed text-text-secondary line-clamp-3">
+              {post.data.description}
+            </p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              {post.data.tags.slice(0, 3).map((tag) => (
+                <span class="rounded-md bg-bg-surface px-2 py-0.5 text-xs text-text-secondary border border-border">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <p class="mt-12 text-text-secondary">Blog posts coming soon.</p>
+    )}
+
+    {posts.length > 0 && (
+      <div class="mt-8 text-center sm:hidden">
+        <a href="/blog" class="text-sm font-medium text-accent hover:text-accent-hover">
+          View all posts &rarr;
+        </a>
+      </div>
+    )}
+  </div>
+</section>

@@ -1,0 +1,24 @@
+---
+import Layout from '@components/layout/Layout.astro';
+---
+
+<Layout
+  title="Page Not Found"
+  description="The page you're looking for doesn't exist."
+>
+  <section class="flex min-h-[60vh] items-center justify-center py-20">
+    <div class="text-center">
+      <p class="text-6xl font-bold text-accent">404</p>
+      <h1 class="mt-4 text-2xl font-bold text-text">Page not found</h1>
+      <p class="mt-2 text-text-secondary">
+        The page you're looking for doesn't exist or has been moved.
+      </p>
+      <a
+        href="/"
+        class="mt-6 inline-flex items-center rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
+      >
+        Go Home
+      </a>
+    </div>
+  </section>
+</Layout>

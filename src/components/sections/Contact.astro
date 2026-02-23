@@ -1,0 +1,41 @@
+---
+import socialData from '@/data/social.json';
+---
+
+<section id="contact" class="py-20 sm:py-24">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-sm font-medium tracking-wider text-accent uppercase">Contact</h2>
+      <p class="mt-2 text-3xl font-bold tracking-tight text-text">
+        Get In Touch
+      </p>
+      <p class="mt-4 text-text-secondary leading-relaxed">
+        I'm always interested in hearing about new projects, opportunities,
+        or just having a conversation about technology.
+      </p>
+
+      <a
+        href={`mailto:${socialData.email}`}
+        class="mt-8 inline-flex items-center rounded-lg bg-accent px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
+      >
+        <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+        </svg>
+        Send Me an Email
+      </a>
+
+      <div class="mt-8 flex items-center justify-center gap-4">
+        {socialData.links.map(({ label, url }) => (
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm font-medium text-text-secondary hover:text-accent transition-colors"
+          >
+            {label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,48 @@
+---
+title: "E-Commerce Platform Rebuild"
+tagline: "Migrated a legacy monolith to a modern microservices architecture, improving performance by 3x and reducing operational costs."
+description: "Complete rebuild of an e-commerce platform from a monolithic architecture to distributed microservices, handling 10K+ concurrent users with sub-200ms response times."
+technologies: ["TypeScript", "Node.js", "React", "PostgreSQL", "Redis", "Docker", "Kubernetes", "AWS"]
+role: "Lead Software Engineer"
+duration: "8 months"
+featured: true
+sortOrder: 1
+results:
+  - "3x improvement in page load performance"
+  - "99.9% uptime achieved post-migration"
+  - "40% reduction in infrastructure costs"
+  - "Deployment frequency increased from weekly to daily"
+---
+
+## The Challenge
+
+The existing e-commerce platform was built as a monolithic application that had grown organically over several years. Performance was degrading under increasing traffic, deployments were risky multi-hour affairs, and the development team struggled to work on features independently.
+
+## Approach
+
+I led a phased migration strategy that allowed the business to continue operating while we incrementally replaced components of the monolith.
+
+### Architecture Decision
+
+Rather than a big-bang rewrite, we used the Strangler Fig pattern. New features were built as microservices from day one, while existing features were gradually extracted.
+
+### Key Technical Decisions
+
+- **Event-driven communication** between services using Kafka for loose coupling
+- **API Gateway pattern** for unified client access and rate limiting
+- **Database-per-service** to ensure data independence
+- **Circuit breakers** to prevent cascade failures
+
+## Solution
+
+The final architecture consisted of 12 independent services, each with its own database and deployment pipeline. Services communicated asynchronously through events, with synchronous REST calls only where real-time responses were required.
+
+### Infrastructure
+
+- Kubernetes for orchestration with auto-scaling policies
+- PostgreSQL for transactional data, Redis for caching and sessions
+- GitHub Actions for CI/CD with canary deployments
+
+## Results
+
+The migration was completed over 8 months with zero downtime. The new architecture delivered measurable improvements across every metric the business cared about.

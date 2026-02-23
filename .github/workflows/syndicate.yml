@@ -1,0 +1,57 @@
+name: Syndicate Content
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/content/blog/**'
+  workflow_dispatch:
+
+jobs:
+  syndicate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Identify new/changed blog posts
+        id: changed-files
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            # Manual trigger: process all blog posts
+            FILES=$(find src/content/blog -name "*.mdx" -o -name "*.md" | tr '\n' ' ')
+          else
+            # Push trigger: only process changed files
+            FILES=$(git diff --name-only --diff-filter=ACM ${{ github.event.before }} ${{ github.sha }} -- src/content/blog/ | tr '\n' ' ')
+          fi
+          echo "files=$FILES" >> $GITHUB_OUTPUT
+          echo "Changed files: $FILES"
+
+      - name: Run syndication
+        if: steps.changed-files.outputs.files != ''
+        env:
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+          HASHNODE_PAT: ${{ secrets.HASHNODE_PAT }}
+          HASHNODE_PUBLICATION_ID: ${{ secrets.HASHNODE_PUBLICATION_ID }}
+          SITE_URL: https://pranshujawade.github.io
+        run: node scripts/syndicate.mjs ${{ steps.changed-files.outputs.files }}
+
+      - name: Commit syndication state
+        if: steps.changed-files.outputs.files != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet .data/; then
+            echo "No syndication state changes to commit."
+          else
+            git add .data/syndication-state.json
+            git commit -m "chore: update syndication state"
+            git push
+          fi

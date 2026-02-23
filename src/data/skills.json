@@ -1,0 +1,28 @@
+{
+  "categories": [
+    {
+      "name": "Languages",
+      "items": ["TypeScript", "JavaScript", "C#", "Python", "Java", "Go", "SQL"]
+    },
+    {
+      "name": "Frontend",
+      "items": ["React", "Next.js", "Angular", "Astro", "Tailwind CSS", "HTML/CSS"]
+    },
+    {
+      "name": "Backend",
+      "items": ["Node.js", ".NET", "Express", "REST APIs", "GraphQL", "gRPC"]
+    },
+    {
+      "name": "Mobile",
+      "items": ["React Native", "Flutter", "iOS", "Android"]
+    },
+    {
+      "name": "Infrastructure",
+      "items": ["AWS", "Azure", "Docker", "Kubernetes", "Terraform", "CI/CD"]
+    },
+    {
+      "name": "Data & Tools",
+      "items": ["PostgreSQL", "MongoDB", "Redis", "Kafka", "Git", "Linux"]
+    }
+  ]
+}

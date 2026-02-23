@@ -1,0 +1,95 @@
+---
+import Layout from '@components/layout/Layout.astro';
+import { type CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'blog'>;
+}
+
+const { entry } = Astro.props;
+const { title, description, pubDate, updatedDate, tags, coverImage } = entry.data;
+const { Content } = await entry.render();
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+
+function estimateReadingTime(body: string): number {
+  const words = body.split(/\s+/).length;
+  return Math.max(1, Math.ceil(words / 200));
+}
+
+const readingTime = estimateReadingTime(entry.body ?? '');
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://pranshujawade.github.io';
+const slug = entry.id.replace(/\.mdx?$/, '');
+---
+
+<Layout
+  title={title}
+  description={description}
+  image={coverImage}
+  type="article"
+  publishDate={pubDate}
+  updatedDate={updatedDate}
+  canonical={`${siteUrl}/blog/${entry.id.replace(/\.mdx?$/, '')}`}
+>
+  <!-- JSON-LD Structured Data -->
+  <script is:inline type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: title,
+    description: description,
+    datePublished: pubDate.toISOString(),
+    dateModified: (updatedDate ?? pubDate).toISOString(),
+    author: { '@type': 'Person', name: 'Pranshu Jawade', url: siteUrl },
+    publisher: { '@type': 'Person', name: 'Pranshu Jawade' },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${siteUrl}/blog/${slug}` },
+    ...(coverImage ? { image: coverImage.startsWith('http') ? coverImage : `${siteUrl}${coverImage}` } : {}),
+  })} />
+
+  <article class="py-12 sm:py-16">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+      <!-- Header -->
+      <header class="mb-10">
+        <div class="flex items-center gap-3 text-sm text-text-secondary">
+          <time datetime={pubDate.toISOString()}>
+            {formatDate(pubDate)}
+          </time>
+          <span aria-hidden="true">&middot;</span>
+          <span>{readingTime} min read</span>
+        </div>
+        <h1 class="mt-4 text-3xl font-bold tracking-tight text-text sm:text-4xl">
+          {title}
+        </h1>
+        <p class="mt-4 text-lg text-text-secondary">
+          {description}
+        </p>
+        {tags.length > 0 && (
+          <div class="mt-4 flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <span class="rounded-md bg-bg-surface px-3 py-1 text-xs font-medium text-text-secondary border border-border">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </header>
+
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none">
+        <Content />
+      </div>
+
+      <!-- Footer -->
+      <footer class="mt-16 border-t border-border pt-8">
+        <a href="/blog" class="text-sm font-medium text-accent hover:text-accent-hover">
+          &larr; Back to all posts
+        </a>
+      </footer>
+    </div>
+  </article>
+</Layout>

@@ -1,0 +1,70 @@
+{
+  "basics": {
+    "name": "Pranshu Jawade",
+    "label": "Senior Software Developer",
+    "email": "hello@pranshujawade.dev",
+    "url": "https://pranshujawade.github.io",
+    "summary": "Senior Software Developer with 11+ years of experience building web applications, cross-platform mobile apps, and distributed systems. Passionate about clean architecture, scalable solutions, and developer experience.",
+    "location": {
+      "city": "",
+      "countryCode": ""
+    }
+  },
+  "work": [
+    {
+      "company": "Company Name",
+      "position": "Senior Software Developer",
+      "url": "",
+      "startDate": "2020-01",
+      "endDate": "",
+      "summary": "Led development of distributed systems and web applications serving millions of users.",
+      "highlights": [
+        "Architected and delivered scalable microservices handling 10K+ requests/second",
+        "Led a cross-functional team of 8 engineers across multiple time zones",
+        "Reduced system latency by 40% through strategic caching and query optimization",
+        "Implemented CI/CD pipelines reducing deployment time from hours to minutes"
+      ]
+    },
+    {
+      "company": "Previous Company",
+      "position": "Software Developer",
+      "url": "",
+      "startDate": "2015-01",
+      "endDate": "2019-12",
+      "summary": "Full-stack development across web and mobile platforms.",
+      "highlights": [
+        "Built cross-platform mobile applications using React Native",
+        "Developed RESTful APIs serving 50+ client applications",
+        "Mentored junior developers and led code review practices"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "University Name",
+      "area": "Computer Science",
+      "studyType": "Bachelor's Degree",
+      "startDate": "2011",
+      "endDate": "2015"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Backend Development",
+      "keywords": ["Node.js", ".NET", "Go", "REST APIs", "GraphQL", "Microservices"]
+    },
+    {
+      "name": "Frontend Development",
+      "keywords": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Angular"]
+    },
+    {
+      "name": "Cloud & DevOps",
+      "keywords": ["AWS", "Azure", "Docker", "Kubernetes", "Terraform", "CI/CD"]
+    },
+    {
+      "name": "Mobile Development",
+      "keywords": ["React Native", "Flutter", "iOS", "Android"]
+    }
+  ],
+  "certifications": []
+}

@@ -1,0 +1,95 @@
+---
+import Layout from '@components/layout/Layout.astro';
+import resumeData from '@/data/resume.json';
+---
+
+<Layout
+  title="CV"
+  description={resumeData.basics.summary}
+>
+  <section class="py-12 sm:py-16">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+      <!-- Header -->
+      <div class="mb-12">
+        <h1 class="text-3xl font-bold tracking-tight text-text sm:text-4xl">
+          {resumeData.basics.name}
+        </h1>
+        <p class="mt-2 text-lg text-accent">{resumeData.basics.label}</p>
+        <p class="mt-4 text-text-secondary leading-relaxed">{resumeData.basics.summary}</p>
+      </div>
+
+      <!-- Experience -->
+      <div class="mb-12">
+        <h2 class="text-sm font-medium tracking-wider text-accent uppercase">Experience</h2>
+        <div class="mt-6 space-y-8">
+          {resumeData.work.map((job) => (
+            <div class="border-l-2 border-border pl-6">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <h3 class="text-lg font-semibold text-text">{job.position}</h3>
+                  <p class="text-sm text-text-secondary">{job.company}</p>
+                </div>
+                <span class="mt-1 text-xs text-text-secondary sm:mt-0">
+                  {job.startDate} &ndash; {job.endDate || 'Present'}
+                </span>
+              </div>
+              <p class="mt-2 text-sm text-text-secondary">{job.summary}</p>
+              {job.highlights.length > 0 && (
+                <ul class="mt-3 space-y-1">
+                  {job.highlights.map((highlight) => (
+                    <li class="flex items-start gap-2 text-sm text-text-secondary">
+                      <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                      {highlight}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="mb-12">
+        <h2 class="text-sm font-medium tracking-wider text-accent uppercase">Education</h2>
+        <div class="mt-6 space-y-4">
+          {resumeData.education.map((edu) => (
+            <div class="border-l-2 border-border pl-6">
+              <h3 class="text-lg font-semibold text-text">{edu.studyType} in {edu.area}</h3>
+              <p class="text-sm text-text-secondary">{edu.institution}</p>
+              <span class="text-xs text-text-secondary">
+                {edu.startDate} &ndash; {edu.endDate}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Skills -->
+      <div class="mb-12">
+        <h2 class="text-sm font-medium tracking-wider text-accent uppercase">Skills</h2>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          {resumeData.skills.map((skillGroup) => (
+            <div class="rounded-xl border border-border bg-bg-surface p-4">
+              <h3 class="text-sm font-semibold text-text">{skillGroup.name}</h3>
+              <div class="mt-2 flex flex-wrap gap-2">
+                {skillGroup.keywords.map((kw) => (
+                  <span class="rounded-md bg-bg px-2 py-0.5 text-xs text-text-secondary border border-border">
+                    {kw}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Download link (placeholder) -->
+      <div class="text-center border-t border-border pt-8">
+        <p class="text-sm text-text-secondary">
+          Need a PDF? <a href="mailto:{resumeData.basics.email}" class="font-medium text-accent hover:text-accent-hover">Get in touch</a> and I'll send one over.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

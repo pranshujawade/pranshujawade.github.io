@@ -19,19 +19,22 @@ function formatDate(date: Date): string {
   title="Blog"
   description="Thoughts on software engineering, architecture, and building products that scale."
 >
-  <section class="py-12 sm:py-16">
+  <section class="py-16 sm:py-20">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-      <h1 class="text-3xl font-bold tracking-tight text-text sm:text-4xl">Blog</h1>
-      <p class="mt-2 text-text-secondary">
-        Thoughts on software engineering, architecture, and building products that scale.
-      </p>
+      <div class="max-w-2xl">
+        <h1 class="text-3xl font-bold tracking-tight text-text sm:text-4xl">Blog</h1>
+        <p class="mt-3 text-lg text-text-secondary leading-relaxed">
+          Thoughts on software engineering, architecture, and building products that scale.
+        </p>
+        <div class="mt-4 h-px bg-gradient-to-r from-accent/40 via-accent/10 to-transparent" aria-hidden="true"></div>
+      </div>
 
       {posts.length > 0 ? (
         <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {posts.map((post) => (
             <a
               href={`/blog/${post.id.replace(/\.mdx?$/, '')}`}
-              class="group rounded-xl border border-border bg-bg-surface p-6 transition-all hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5"
+              class="group rounded-xl border border-border bg-bg-surface p-6 transition-all duration-200 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5 hover:-translate-y-1"
             >
               <time datetime={post.data.pubDate.toISOString()} class="text-xs text-text-secondary">
                 {formatDate(post.data.pubDate)}
@@ -44,7 +47,7 @@ function formatDate(date: Date): string {
               </p>
               <div class="mt-4 flex flex-wrap gap-2">
                 {post.data.tags.map((tag) => (
-                  <span class="rounded-md bg-bg px-2 py-0.5 text-xs text-text-secondary border border-border">
+                  <span class="rounded-md bg-accent-muted px-2 py-0.5 text-xs text-accent border border-accent/10">
                     {tag}
                   </span>
                 ))}
@@ -53,7 +56,9 @@ function formatDate(date: Date): string {
           ))}
         </div>
       ) : (
-        <p class="mt-12 text-text-secondary">No posts yet. Check back soon.</p>
+        <div class="mt-16 text-center">
+          <p class="text-lg text-text-secondary">No posts yet. Check back soon.</p>
+        </div>
       )}
     </div>
   </section>

@@ -3,12 +3,12 @@ const currentYear = new Date().getFullYear();
 
 const socialLinks = [
   { label: 'GitHub', href: 'https://github.com/pranshujawade', icon: 'github' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/pranshujawade', icon: 'linkedin' },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/pranshu-jawade', icon: 'linkedin' },
   { label: 'Dev.to', href: 'https://dev.to/pranshujawade', icon: 'devto' },
 ];
 ---
 
-<footer class="border-t border-border bg-bg">
+<footer class="border-t border-border/50">
   <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
     <div class="flex flex-col items-center gap-6 sm:flex-row sm:justify-between">
       <!-- Logo / Brand -->
@@ -17,18 +17,18 @@ const socialLinks = [
           PJ<span class="text-accent">.</span>
         </a>
         <p class="mt-1 text-sm text-text-secondary">
-          Building software that matters.
+          Building secure platforms at scale.
         </p>
       </div>
 
       <!-- Social Links -->
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-3">
         {socialLinks.map(({ label, href, icon }) => (
           <a
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            class="rounded-lg p-2 text-text-secondary hover:bg-bg-surface hover:text-text transition-colors"
+            class="rounded-lg border border-border p-2.5 text-text-secondary transition-all duration-200 hover:border-accent/30 hover:text-accent hover:bg-accent-muted"
             aria-label={label}
           >
             {icon === 'github' && (
@@ -52,8 +52,8 @@ const socialLinks = [
     </div>
 
     <!-- Copyright -->
-    <div class="mt-8 border-t border-border pt-6 text-center">
-      <p class="text-sm text-text-secondary">
+    <div class="mt-8 border-t border-border/50 pt-6 text-center">
+      <p class="text-xs text-text-secondary">
         &copy; {currentYear} Pranshu Jawade. All rights reserved.
       </p>
     </div>

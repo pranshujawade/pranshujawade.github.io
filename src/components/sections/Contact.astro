@@ -2,21 +2,27 @@
 import socialData from '@/data/social.json';
 ---
 
-<section id="contact" class="py-20 sm:py-24">
+<section id="contact" class="relative py-24 sm:py-28 overflow-hidden">
+  <!-- Background gradient -->
+  <div class="absolute inset-0 -z-10" aria-hidden="true">
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-gradient-to-t from-accent/5 via-transparent to-transparent blur-3xl"></div>
+  </div>
+
   <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-2xl text-center">
       <h2 class="text-sm font-medium tracking-wider text-accent uppercase">Contact</h2>
       <p class="mt-2 text-3xl font-bold tracking-tight text-text">
         Get In Touch
       </p>
-      <p class="mt-4 text-text-secondary leading-relaxed">
+      <div class="mx-auto mt-4 h-1 w-12 rounded-full bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)]"></div>
+      <p class="mt-6 text-text-secondary leading-relaxed">
         I'm always interested in hearing about new projects, opportunities,
         or just having a conversation about technology.
       </p>
 
       <a
         href={`mailto:${socialData.email}`}
-        class="mt-8 inline-flex items-center rounded-lg bg-accent px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
+        class="mt-8 inline-flex items-center rounded-lg bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] px-6 py-3 text-sm font-medium text-white shadow-lg shadow-accent/20 transition-all hover:shadow-xl hover:shadow-accent/30 hover:-translate-y-0.5"
       >
         <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
@@ -24,13 +30,13 @@ import socialData from '@/data/social.json';
         Send Me an Email
       </a>
 
-      <div class="mt-8 flex items-center justify-center gap-4">
+      <div class="mt-8 flex items-center justify-center gap-6">
         {socialData.links.map(({ label, url }) => (
           <a
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            class="text-sm font-medium text-text-secondary hover:text-accent transition-colors"
+            class="rounded-lg border border-border bg-bg-surface px-4 py-2 text-sm font-medium text-text-secondary transition-all hover:text-accent hover:border-accent/30 hover:-translate-y-0.5"
           >
             {label}
           </a>

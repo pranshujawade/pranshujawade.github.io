@@ -7,34 +7,35 @@ import resumeData from '@/data/resume.json';
   title="CV"
   description={resumeData.basics.summary}
 >
-  <section class="py-12 sm:py-16">
+  <section class="py-16 sm:py-20">
     <div class="mx-auto max-w-3xl px-4 sm:px-6">
       <!-- Header -->
       <div class="mb-12">
-        <h1 class="text-3xl font-bold tracking-tight text-text sm:text-4xl">
+        <h1 class="text-3xl font-bold tracking-tight text-text sm:text-4xl lg:text-5xl">
           {resumeData.basics.name}
         </h1>
-        <p class="mt-2 text-lg text-accent">{resumeData.basics.label}</p>
+        <p class="mt-3 text-lg font-medium text-accent">{resumeData.basics.label}</p>
         {resumeData.basics.location?.city && (
           <p class="mt-1 text-sm text-text-secondary">
             {resumeData.basics.location.city}, {resumeData.basics.location.countryCode === 'IN' ? 'India' : resumeData.basics.location.countryCode}
           </p>
         )}
         <p class="mt-4 text-text-secondary leading-relaxed">{resumeData.basics.summary}</p>
+        <div class="mt-6 h-px bg-gradient-to-r from-accent/40 via-accent/10 to-transparent" aria-hidden="true"></div>
       </div>
 
       <!-- Experience -->
-      <div class="mb-12">
-        <h2 class="text-sm font-medium tracking-wider text-accent uppercase">Professional Experience</h2>
+      <div class="mb-14">
+        <h2 class="text-xs font-semibold tracking-widest text-accent uppercase">Professional Experience</h2>
         <div class="mt-6 space-y-8">
           {resumeData.work.map((job) => (
-            <div class="border-l-2 border-border pl-6">
+            <div class="border-l-2 border-border pl-6 transition-colors hover:border-accent/50">
               <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between">
                 <div>
                   <h3 class="text-lg font-semibold text-text">{job.position}</h3>
-                  <p class="text-sm text-accent">{job.company}</p>
+                  <p class="text-sm font-medium text-accent">{job.company}</p>
                 </div>
-                <span class="mt-1 text-xs text-text-secondary sm:mt-0 sm:text-right whitespace-nowrap">
+                <span class="mt-1 rounded-md bg-bg-surface px-2 py-0.5 text-xs text-text-secondary sm:mt-0 sm:text-right whitespace-nowrap border border-border">
                   {job.startDate} &ndash; {job.endDate || 'Present'}
                 </span>
               </div>
@@ -43,7 +44,7 @@ import resumeData from '@/data/resume.json';
                 <ul class="mt-3 space-y-2">
                   {job.highlights.map((highlight) => (
                     <li class="flex items-start gap-2 text-sm text-text-secondary">
-                      <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                      <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/60" aria-hidden="true"></span>
                       <span>{highlight}</span>
                     </li>
                   ))}
@@ -55,18 +56,18 @@ import resumeData from '@/data/resume.json';
       </div>
 
       <!-- Education -->
-      <div class="mb-12">
-        <h2 class="text-sm font-medium tracking-wider text-accent uppercase">Education</h2>
+      <div class="mb-14">
+        <h2 class="text-xs font-semibold tracking-widest text-accent uppercase">Education</h2>
         <div class="mt-6 space-y-4">
           {resumeData.education.map((edu) => (
             <div class="border-l-2 border-border pl-6">
               <h3 class="text-lg font-semibold text-text">{edu.studyType}</h3>
-              <p class="text-sm text-accent">{edu.area}</p>
+              <p class="text-sm font-medium text-accent">{edu.area}</p>
               <p class="text-sm text-text-secondary">{edu.institution}</p>
               {edu.location && (
                 <p class="text-xs text-text-secondary">{edu.location}</p>
               )}
-              <span class="text-xs text-text-secondary">
+              <span class="inline-block mt-1 rounded-md bg-bg-surface px-2 py-0.5 text-xs text-text-secondary border border-border">
                 {edu.startDate} &ndash; {edu.endDate}
               </span>
             </div>
@@ -75,15 +76,15 @@ import resumeData from '@/data/resume.json';
       </div>
 
       <!-- Skills -->
-      <div class="mb-12">
-        <h2 class="text-sm font-medium tracking-wider text-accent uppercase">Technical Skills</h2>
+      <div class="mb-14">
+        <h2 class="text-xs font-semibold tracking-widest text-accent uppercase">Technical Skills</h2>
         <div class="mt-6 grid gap-4 sm:grid-cols-2">
           {resumeData.skills.map((skillGroup) => (
-            <div class="rounded-xl border border-border bg-bg-surface p-4">
+            <div class="rounded-xl border border-border bg-bg-surface p-4 transition-colors hover:border-accent/20">
               <h3 class="text-sm font-semibold text-text">{skillGroup.name}</h3>
               <div class="mt-2 flex flex-wrap gap-2">
                 {skillGroup.keywords.map((kw) => (
-                  <span class="rounded-md bg-bg px-2 py-0.5 text-xs text-text-secondary border border-border">
+                  <span class="rounded-md bg-accent-muted px-2 py-0.5 text-xs text-accent border border-accent/10">
                     {kw}
                   </span>
                 ))}
@@ -95,17 +96,17 @@ import resumeData from '@/data/resume.json';
 
       <!-- Awards -->
       {resumeData.awards && resumeData.awards.length > 0 && (
-        <div class="mb-12">
-          <h2 class="text-sm font-medium tracking-wider text-accent uppercase">Honors & Awards</h2>
-          <div class="mt-6 space-y-3">
+        <div class="mb-14">
+          <h2 class="text-xs font-semibold tracking-widest text-accent uppercase">Honors & Awards</h2>
+          <div class="mt-6 space-y-4">
             {resumeData.awards.map((award) => (
               <div class="flex items-start gap-3">
-                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/60" aria-hidden="true"></span>
                 <div>
-                  <p class="text-sm font-medium text-text">{award.title}</p>
+                  <p class="text-sm font-semibold text-text">{award.title}</p>
                   <p class="text-xs text-text-secondary">
                     {award.awarder}
-                    {award.date && ` • ${award.date}`}
+                    {award.date && ` · ${award.date}`}
                   </p>
                   {award.summary && (
                     <p class="text-xs text-text-secondary mt-0.5">{award.summary}</p>
@@ -119,14 +120,14 @@ import resumeData from '@/data/resume.json';
 
       <!-- Speaking & Leadership -->
       {resumeData.speaking && resumeData.speaking.length > 0 && (
-        <div class="mb-12">
-          <h2 class="text-sm font-medium tracking-wider text-accent uppercase">Speaking & Leadership</h2>
-          <div class="mt-6 space-y-3">
+        <div class="mb-14">
+          <h2 class="text-xs font-semibold tracking-widest text-accent uppercase">Speaking & Leadership</h2>
+          <div class="mt-6 space-y-4">
             {resumeData.speaking.map((item) => (
               <div class="flex items-start gap-3">
-                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/60" aria-hidden="true"></span>
                 <div>
-                  <p class="text-sm font-medium text-text">{item.event}</p>
+                  <p class="text-sm font-semibold text-text">{item.event}</p>
                   {item.organization && (
                     <p class="text-xs text-text-secondary">{item.organization}</p>
                   )}
@@ -142,12 +143,12 @@ import resumeData from '@/data/resume.json';
 
       <!-- Languages -->
       {resumeData.languages && resumeData.languages.length > 0 && (
-        <div class="mb-12">
-          <h2 class="text-sm font-medium tracking-wider text-accent uppercase">Languages</h2>
+        <div class="mb-14">
+          <h2 class="text-xs font-semibold tracking-widest text-accent uppercase">Languages</h2>
           <div class="mt-6 flex flex-wrap gap-4">
             {resumeData.languages.map((lang) => (
-              <div class="rounded-xl border border-border bg-bg-surface px-4 py-2">
-                <p class="text-sm font-medium text-text">{lang.language}</p>
+              <div class="rounded-xl border border-border bg-bg-surface px-5 py-3 transition-colors hover:border-accent/20">
+                <p class="text-sm font-semibold text-text">{lang.language}</p>
                 <p class="text-xs text-text-secondary">{lang.fluency}</p>
               </div>
             ))}
@@ -158,7 +159,7 @@ import resumeData from '@/data/resume.json';
       <!-- Contact -->
       <div class="text-center border-t border-border pt-8">
         <p class="text-sm text-text-secondary">
-          Need a PDF? <a href={`mailto:${resumeData.basics.email}`} class="font-medium text-accent hover:text-accent-hover">Get in touch</a> and I'll send one over.
+          Need a PDF? <a href={`mailto:${resumeData.basics.email}`} class="font-medium text-accent hover:text-accent-hover transition-colors">Get in touch</a> and I'll send one over.
         </p>
       </div>
     </div>

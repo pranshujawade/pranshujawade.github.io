@@ -15,7 +15,7 @@ function formatDate(date: Date): string {
 }
 ---
 
-<section id="blog" class="py-20 sm:py-24 bg-bg-surface">
+<section id="blog" class="py-24 sm:py-28 bg-bg-surface">
   <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
     <div class="flex items-end justify-between">
       <div>
@@ -23,9 +23,10 @@ function formatDate(date: Date): string {
         <p class="mt-2 text-3xl font-bold tracking-tight text-text">
           Latest Posts
         </p>
+        <div class="mt-4 h-1 w-12 rounded-full bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)]"></div>
       </div>
       {posts.length > 0 && (
-        <a href="/blog" class="hidden text-sm font-medium text-accent hover:text-accent-hover sm:block">
+        <a href="/blog" class="hidden text-sm font-medium text-accent hover:text-accent-hover sm:block transition-colors">
           View all posts &rarr;
         </a>
       )}
@@ -36,12 +37,12 @@ function formatDate(date: Date): string {
         {posts.map((post) => (
           <a
             href={`/blog/${post.id.replace(/\.mdx?$/, '')}`}
-            class="group rounded-xl border border-border bg-bg p-6 transition-all hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5"
+            class="group rounded-xl border border-border bg-bg p-6 transition-all hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5 hover:-translate-y-1"
           >
-            <time datetime={post.data.pubDate.toISOString()} class="text-xs text-text-secondary">
+            <time datetime={post.data.pubDate.toISOString()} class="text-xs font-medium text-accent/70">
               {formatDate(post.data.pubDate)}
             </time>
-            <h3 class="mt-2 text-lg font-semibold text-text group-hover:text-accent transition-colors line-clamp-2">
+            <h3 class="mt-3 text-lg font-semibold text-text group-hover:text-accent transition-colors line-clamp-2">
               {post.data.title}
             </h3>
             <p class="mt-2 text-sm leading-relaxed text-text-secondary line-clamp-3">
@@ -49,7 +50,7 @@ function formatDate(date: Date): string {
             </p>
             <div class="mt-4 flex flex-wrap gap-2">
               {post.data.tags.slice(0, 3).map((tag) => (
-                <span class="rounded-md bg-bg-surface px-2 py-0.5 text-xs text-text-secondary border border-border">
+                <span class="rounded-md bg-accent-muted px-2 py-0.5 text-xs text-accent border border-accent/10">
                   {tag}
                 </span>
               ))}
@@ -63,7 +64,7 @@ function formatDate(date: Date): string {
 
     {posts.length > 0 && (
       <div class="mt-8 text-center sm:hidden">
-        <a href="/blog" class="text-sm font-medium text-accent hover:text-accent-hover">
+        <a href="/blog" class="text-sm font-medium text-accent hover:text-accent-hover transition-colors">
           View all posts &rarr;
         </a>
       </div>

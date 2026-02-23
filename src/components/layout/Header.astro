@@ -10,7 +10,7 @@ const navItems = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 border-b border-border bg-bg/80 backdrop-blur-md">
+<header class="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-bg/80 backdrop-blur-lg">
   <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8" aria-label="Main navigation">
     <a href="/" class="text-lg font-bold tracking-tight text-text hover:text-accent transition-colors">
       PJ<span class="text-accent">.</span>
@@ -25,14 +25,15 @@ const currentPath = Astro.url.pathname;
             <a
               href={href}
               class:list={[
-                'rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+                'relative rounded-lg px-3 py-2 text-sm font-medium transition-colors',
                 isActive
-                  ? 'bg-bg-surface text-accent'
+                  ? 'text-accent'
                   : 'text-text-secondary hover:bg-bg-surface hover:text-text',
               ]}
               aria-current={isActive ? 'page' : undefined}
             >
               {label}
+              {isActive && <span class="absolute inset-x-1 -bottom-px h-0.5 rounded-full bg-accent" aria-hidden="true"></span>}
             </a>
           </li>
         );
@@ -64,7 +65,7 @@ const currentPath = Astro.url.pathname;
   </nav>
 
   <!-- Mobile nav -->
-  <div id="mobile-menu" class="hidden border-t border-border md:hidden" role="navigation" aria-label="Mobile navigation">
+  <div id="mobile-menu" class="hidden border-t border-border/50 bg-bg/95 backdrop-blur-lg md:hidden" role="navigation" aria-label="Mobile navigation">
     <ul class="space-y-1 px-4 py-3" role="list">
       {navItems.map(({ label, href }) => {
         const isActive = href === '/' ? currentPath === '/' : currentPath.startsWith(href);
@@ -75,7 +76,7 @@ const currentPath = Astro.url.pathname;
               class:list={[
                 'block rounded-lg px-3 py-2 text-sm font-medium transition-colors',
                 isActive
-                  ? 'bg-bg-surface text-accent'
+                  ? 'bg-accent-muted text-accent'
                   : 'text-text-secondary hover:bg-bg-surface hover:text-text',
               ]}
               aria-current={isActive ? 'page' : undefined}

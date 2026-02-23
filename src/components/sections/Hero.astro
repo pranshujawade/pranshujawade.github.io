@@ -1,23 +1,53 @@
 ---
 ---
 
-<section class="relative overflow-hidden py-24 sm:py-32 lg:py-40">
+<section class="relative overflow-hidden py-28 sm:py-36 lg:py-44">
+  <!-- Background gradient mesh -->
+  <div class="absolute inset-0 -z-10" aria-hidden="true">
+    <div class="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-gradient-to-bl from-accent/10 via-transparent to-transparent blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-accent/5 via-transparent to-transparent blur-3xl"></div>
+  </div>
+
   <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
     <div class="max-w-3xl">
-      <p class="text-sm font-medium tracking-wider text-accent uppercase">
-        Principal Platform Engineer
-      </p>
-      <h1 class="mt-4 text-4xl font-bold tracking-tight text-text sm:text-5xl lg:text-6xl">
-        Hi, I'm <span class="text-accent">Pranshu Jawade</span>
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent-muted px-4 py-1.5 text-xs font-medium text-accent">
+        <span class="h-1.5 w-1.5 rounded-full bg-accent animate-pulse"></span>
+        Principal Platform Engineer at Microsoft
+      </div>
+
+      <h1 class="mt-6 text-4xl font-bold tracking-tight text-text sm:text-5xl lg:text-6xl">
+        Building secure platforms
+        <span class="bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] bg-clip-text text-transparent">
+          at scale
+        </span>
       </h1>
-      <p class="mt-6 text-lg leading-relaxed text-text-secondary sm:text-xl">
-        I architect enterprise-scale platforms, cloud security systems, and distributed infrastructure.
-        With 10+ years of experience at Microsoft and Boeing, I turn complex security challenges into scalable solutions.
+
+      <p class="mt-6 text-lg leading-relaxed text-text-secondary sm:text-xl max-w-2xl">
+        I'm <strong class="text-text font-semibold">Pranshu Jawade</strong> &mdash; I architect enterprise-scale platforms, 
+        cloud security systems, and distributed infrastructure serving millions of users across Microsoft's multi-cloud environments.
       </p>
-      <div class="mt-8 flex flex-wrap gap-4">
+
+      <!-- Stats row -->
+      <div class="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-sm text-text-secondary">
+        <div class="flex items-center gap-2">
+          <span class="text-2xl font-bold text-text">10+</span>
+          <span>Years Experience</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-2xl font-bold text-text">6+</span>
+          <span>Production Platforms</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-2xl font-bold text-text">89</span>
+          <span>Engineers Led</span>
+        </div>
+      </div>
+
+      <div class="mt-10 flex flex-wrap gap-4">
         <a
           href="/case-studies"
-          class="inline-flex items-center rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
+          class="inline-flex items-center rounded-lg bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] px-6 py-3 text-sm font-medium text-white shadow-lg shadow-accent/20 transition-all hover:shadow-xl hover:shadow-accent/30 hover:-translate-y-0.5"
         >
           View My Work
           <svg class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -26,14 +56,11 @@
         </a>
         <a
           href="/blog"
-          class="inline-flex items-center rounded-lg border border-border px-5 py-2.5 text-sm font-medium text-text transition-colors hover:bg-bg-surface"
+          class="inline-flex items-center rounded-lg border border-border bg-bg-surface px-6 py-3 text-sm font-medium text-text transition-all hover:border-accent/30 hover:bg-bg-surface-hover hover:-translate-y-0.5"
         >
           Read My Blog
         </a>
       </div>
     </div>
   </div>
-
-  <!-- Subtle gradient accent -->
-  <div class="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-accent/5 blur-3xl" aria-hidden="true"></div>
 </section>

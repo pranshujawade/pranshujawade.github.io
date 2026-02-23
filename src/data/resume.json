@@ -1,70 +1,186 @@
 {
   "basics": {
     "name": "Pranshu Jawade",
-    "label": "Senior Software Developer",
-    "email": "hello@pranshujawade.dev",
+    "label": "Principal Platform Engineer",
+    "email": "jawade.pranshu@gmail.com",
     "url": "https://pranshujawade.github.io",
-    "summary": "Senior Software Developer with 11+ years of experience building web applications, cross-platform mobile apps, and distributed systems. Passionate about clean architecture, scalable solutions, and developer experience.",
+    "summary": "Principal Platform Engineer specializing in cloud security and distributed systems with 10+ years architecting enterprise-scale platforms. Expert in Kubernetes, Azure infrastructure, and identity management. Delivered 6+ production platforms serving millions of users across Microsoft's multi-cloud environments. Built and led teams of up to 89 engineers. CTO experience with venture that raised $4.8M and achieved successful acquisition. Authored 20+ architecture documents solving novel security challenges.",
     "location": {
-      "city": "",
-      "countryCode": ""
-    }
+      "city": "Bangalore",
+      "countryCode": "IN"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "url": "https://linkedin.com/in/pranshu-jawade"
+      },
+      {
+        "network": "GitHub",
+        "url": "https://github.com/pranshujawade"
+      }
+    ]
   },
   "work": [
     {
-      "company": "Company Name",
-      "position": "Senior Software Developer",
-      "url": "",
-      "startDate": "2020-01",
+      "company": "Microsoft",
+      "position": "Senior Security Software Engineer (Principal Track)",
+      "url": "https://microsoft.com",
+      "startDate": "2021-07",
       "endDate": "",
-      "summary": "Led development of distributed systems and web applications serving millions of users.",
+      "summary": "Azure Security - Identity and Access Protection",
       "highlights": [
-        "Architected and delivered scalable microservices handling 10K+ requests/second",
-        "Led a cross-functional team of 8 engineers across multiple time zones",
-        "Reduced system latency by 40% through strategic caching and query optimization",
-        "Implemented CI/CD pipelines reducing deployment time from hours to minutes"
+        "Tenant Automation & Isolation Platform: Proposed and secured executive buy-in for critical security platform following 2023-24 security incidents; protects all Microsoft clouds (public Azure, sovereign, air-gapped)",
+        "Architected orchestration engine and agent-based eviction system; authored 20+ technical documents including Strategy papers, HLD/LLD, ADRs, and security compliance documentation",
+        "Built and hired 16-engineer team; delivered production platform in 6 months enabling automated threat actor eviction and blast radius reduction",
+        "App Governance Platform: Architected from scratch and delivered production platform in 1 month; now governs all Microsoft Entra applications company-wide",
+        "Core Identity Platform: Founding architect for Microsoft's cloud identity transformation; replaced legacy Microsoft Identity Manager (MIM), enabling migration to cloud-native Entra ID",
+        "Built 11-engineer team in India, collaborated with 12-engineer Redmond team; delivered platform processing 3-5M daily requests for user provisioning, groups, and entitlements",
+        "Served as Primary SOX Control Owner for 16 controls for 3 years; maintained audit compliance for all Microsoft, LinkedIn, and GitHub identity operations",
+        "Self-Service Password Reset: Architected platform serving 10-15k daily password resets; successfully decommissioned in 2023 as part of Microsoft's passwordless authentication initiative",
+        "Azure Virtual Desktop Management: Architected React-based self-service portal; scaled from IAM pilot to Microsoft-wide deployment managing 50k+ AVD instances"
       ]
     },
     {
-      "company": "Previous Company",
-      "position": "Software Developer",
-      "url": "",
-      "startDate": "2015-01",
-      "endDate": "2019-12",
-      "summary": "Full-stack development across web and mobile platforms.",
+      "company": "Boeing",
+      "position": "Programmer Analyst II | CTO, EOL Internal Venture",
+      "url": "https://boeing.com",
+      "startDate": "2017-11",
+      "endDate": "2021-07",
+      "summary": "CTO & Founding Member of EOL (End of Life) - Boeing Incubator Program",
       "highlights": [
-        "Built cross-platform mobile applications using React Native",
-        "Developed RESTful APIs serving 50+ client applications",
-        "Mentored junior developers and led code review practices"
+        "Selected from Boeing internal incubator program to serve as Founding CTO for venture addressing aircraft parts supply chain challenges",
+        "Recruited, hired, and led 89-person engineering team in Memphis, Texas; secured $4.8M across three funding rounds from internal Boeing sponsors",
+        "Built cross-platform web and mobile applications; pioneered blockchain-based aircraft parts tracking system - first blockchain supply chain solution in commercial aviation",
+        "Successfully acquired by Inventory Locator Service (ILS), a Boeing subsidiary, in 2019",
+        "Acquisition Portal Modernization: Re-architected legacy ColdFusion system using .NET Core and ELSA Workflow; reduced approval cycles by 40%",
+        "SAP-Azure DevOps Integration: Designed RESTful APIs bridging SAP Solution Manager with Azure DevOps; automated work package synchronization for 200+ project managers",
+        "Created reusable mobile architecture templates adopted by 15+ Boeing development teams"
+      ]
+    },
+    {
+      "company": "Wizoly Solutions Pvt Ltd",
+      "position": "Founder",
+      "url": "",
+      "startDate": "2016",
+      "endDate": "2022",
+      "summary": "Founded consulting company as solo freelancer; scaled to 6-person team",
+      "highlights": [
+        "Scaled to 6-person team generating ₹8 Lacs monthly revenue",
+        "Delivered web development, mobile applications, cloud consulting, and SAP Hybris implementations",
+        "Clients included Littler Associates, Fabrico Laundry, NHAI, and POS systems for restaurants",
+        "Closed company in 2022 to focus on full-time role at Microsoft"
+      ]
+    },
+    {
+      "company": "Saggezza",
+      "position": "Associate Software Engineer",
+      "url": "",
+      "startDate": "2016-07",
+      "endDate": "2017-11",
+      "summary": "Enterprise web application development",
+      "highlights": [
+        "Developed .NET-based enterprise web applications adhering to SOLID principles and clean architecture patterns",
+        "Built responsive UIs using Angular with REST API integration",
+        "Implemented automated testing and CI/CD pipelines using GitLab CI and Cypress"
+      ]
+    },
+    {
+      "company": "Orious System Pvt Ltd",
+      "position": "Junior Web Developer",
+      "url": "",
+      "startDate": "2015-07",
+      "endDate": "2016-07",
+      "summary": "Web application development for SMB clients",
+      "highlights": [
+        "Developed web applications using HTML, CSS, JavaScript, and ASP.NET",
+        "Created SQL queries and stored procedures for business applications"
       ]
     }
   ],
   "education": [
     {
-      "institution": "University Name",
-      "area": "Computer Science",
-      "studyType": "Bachelor's Degree",
+      "institution": "Visvesvaraya Technological University",
+      "area": "Electronics and Communications Engineering",
+      "studyType": "Bachelor of Engineering (BE)",
       "startDate": "2011",
-      "endDate": "2015"
+      "endDate": "2015",
+      "location": "Belgaum, India"
     }
   ],
   "skills": [
     {
-      "name": "Backend Development",
-      "keywords": ["Node.js", ".NET", "Go", "REST APIs", "GraphQL", "Microservices"]
+      "name": "Cloud & Infrastructure",
+      "keywords": ["Azure (Expert)", "AKS", "Kubernetes", "Docker", "Helm", "Bicep", "ARM Templates", "Multi-cloud", "Infrastructure as Code"]
     },
     {
-      "name": "Frontend Development",
-      "keywords": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Angular"]
+      "name": "Platform Engineering",
+      "keywords": ["Distributed Systems", "Microservices Architecture", "Multi-tenant Platforms", "SRE", "BCDR", "Chaos Engineering"]
     },
     {
-      "name": "Cloud & DevOps",
-      "keywords": ["AWS", "Azure", "Docker", "Kubernetes", "Terraform", "CI/CD"]
+      "name": "Programming & Frameworks",
+      "keywords": ["C#", ".NET Core", ".NET 8", "ASP.NET", "JavaScript", "React", "Angular", "Flutter", "Python", "Go"]
     },
     {
-      "name": "Mobile Development",
-      "keywords": ["React Native", "Flutter", "iOS", "Android"]
+      "name": "Security & Identity",
+      "keywords": ["IAM", "Cloud Security Architecture", "Microsoft Entra ID", "Managed Identity", "Federated Identity", "Azure Key Vault", "SOX Compliance"]
+    },
+    {
+      "name": "DevOps & Observability",
+      "keywords": ["CI/CD", "Azure DevOps", "GitHub Actions", "OpenTelemetry", "Azure Monitor", "Azure Functions", "Cosmos DB", "Service Bus"]
+    },
+    {
+      "name": "Leadership & Strategy",
+      "keywords": ["Team Building & Hiring", "Technical Architecture (HLD/LLD/ADR)", "Executive Communication", "Strategic Planning", "Mentoring"]
     }
   ],
-  "certifications": []
+  "awards": [
+    {
+      "title": "Microsoft Security Hackathon 2023",
+      "awarder": "Microsoft",
+      "date": "2023"
+    },
+    {
+      "title": "Microsoft Global Hackathon 2021",
+      "awarder": "Microsoft",
+      "date": "2021"
+    },
+    {
+      "title": "Rajya Puraskar - State Award",
+      "awarder": "Bharat Scout and Guides",
+      "summary": "Distinguished contribution to Bharat Scout and Guides"
+    },
+    {
+      "title": "Pride@Boeing Recognition Award",
+      "awarder": "Boeing"
+    },
+    {
+      "title": "Saggezza Excellence Award",
+      "awarder": "Saggezza"
+    }
+  ],
+  "speaking": [
+    {
+      "event": "BlueHat Security Conference",
+      "organization": "Microsoft",
+      "topic": "Cloud security and identity platforms"
+    },
+    {
+      "event": "Vice President",
+      "organization": "Toastmasters Club, Bangalore Chapter"
+    },
+    {
+      "event": "University Guest Lecturer",
+      "topic": "Cloud architecture and platform engineering at engineering colleges"
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Professional Working Proficiency"
+    },
+    {
+      "language": "Hindi",
+      "fluency": "Professional Working Proficiency"
+    }
+  ]
 }

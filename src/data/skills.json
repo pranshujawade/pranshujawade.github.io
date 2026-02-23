@@ -1,28 +1,28 @@
 {
   "categories": [
     {
-      "name": "Languages",
-      "items": ["TypeScript", "JavaScript", "C#", "Python", "Java", "Go", "SQL"]
+      "name": "Cloud & Infrastructure",
+      "items": ["Azure (Expert)", "AKS", "Kubernetes", "Docker", "Helm", "Bicep", "ARM Templates", "Multi-cloud", "IaC"]
     },
     {
-      "name": "Frontend",
-      "items": ["React", "Next.js", "Angular", "Astro", "Tailwind CSS", "HTML/CSS"]
+      "name": "Platform Engineering",
+      "items": ["Distributed Systems", "Microservices", "Multi-tenant Platforms", "SRE", "BCDR", "Chaos Engineering"]
     },
     {
-      "name": "Backend",
-      "items": ["Node.js", ".NET", "Express", "REST APIs", "GraphQL", "gRPC"]
+      "name": "Programming",
+      "items": ["C#", ".NET Core", ".NET 8", "ASP.NET", "JavaScript", "React", "Angular", "Flutter", "Python", "Go"]
     },
     {
-      "name": "Mobile",
-      "items": ["React Native", "Flutter", "iOS", "Android"]
+      "name": "Security & Identity",
+      "items": ["IAM", "Cloud Security", "Microsoft Entra ID", "Managed Identity", "Azure Key Vault", "SOX Compliance"]
     },
     {
-      "name": "Infrastructure",
-      "items": ["AWS", "Azure", "Docker", "Kubernetes", "Terraform", "CI/CD"]
+      "name": "DevOps & Observability",
+      "items": ["Azure DevOps", "GitHub Actions", "OpenTelemetry", "Azure Monitor", "Azure Functions", "Cosmos DB"]
     },
     {
-      "name": "Data & Tools",
-      "items": ["PostgreSQL", "MongoDB", "Redis", "Kafka", "Git", "Linux"]
+      "name": "Leadership",
+      "items": ["Team Building", "Technical Architecture", "HLD/LLD/ADR", "Executive Communication", "Mentoring"]
     }
   ]
 }

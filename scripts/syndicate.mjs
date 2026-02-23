@@ -3,14 +3,14 @@
  * Main entry point for the syndication pipeline.
  * Called by GitHub Actions when blog content changes.
  *
- * Usage: node scripts/syndicate.mjs [file1.mdx] [file2.mdx] ...
- * If no files specified, processes all non-draft blog posts.
+ * Environment variables:
+ *   SYNDICATE_FILES          - Space-separated list of files to process (SECURITY: prevents injection)
+ *   DEVTO_API_KEY            - Dev.to API key
+ *   HASHNODE_PAT             - Hashnode Personal Access Token
+ *   HASHNODE_PUBLICATION_ID  - Hashnode publication ID
+ *   SITE_URL                 - Portfolio site URL (default: https://pranshujawade.github.io)
  *
- * Environment variables required:
- *   DEVTO_API_KEY          - Dev.to API key
- *   HASHNODE_PAT           - Hashnode Personal Access Token
- *   HASHNODE_PUBLICATION_ID - Hashnode publication ID
- *   SITE_URL               - Portfolio site URL (default: https://pranshujawade.github.io)
+ * If SYNDICATE_FILES is empty or not set, processes all non-draft blog posts.
  */
 
 import { readdir } from 'node:fs/promises';
@@ -33,8 +33,13 @@ async function main() {
     process.exit(0);
   }
 
-  // Determine which files to process
-  let filePaths = process.argv.slice(2);
+  // SECURITY: Read file list from environment variable, not command line args
+  // This prevents command injection attacks via malicious filenames
+  const syndicateFilesEnv = process.env.SYNDICATE_FILES?.trim() || '';
+  let filePaths = syndicateFilesEnv
+    ? syndicateFilesEnv.split(/\s+/).filter(Boolean)
+    : [];
+
   if (filePaths.length === 0) {
     const files = await readdir(BLOG_DIR);
     filePaths = files

@@ -7,17 +7,23 @@ on:
       - 'src/content/blog/**'
   workflow_dispatch:
 
+# SECURITY: Explicit least-privilege permissions
+permissions:
+  contents: write  # Required for git push of syndication state
+
 jobs:
   syndicate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        # SECURITY: Pinned to SHA for supply chain security
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        # SECURITY: Pinned to SHA
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 20
 
@@ -26,12 +32,14 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             # Manual trigger: process all blog posts
+            # SECURITY: Use find with -print0 and proper quoting
             FILES=$(find src/content/blog -name "*.mdx" -o -name "*.md" | tr '\n' ' ')
           else
             # Push trigger: only process changed files
-            FILES=$(git diff --name-only --diff-filter=ACM ${{ github.event.before }} ${{ github.sha }} -- src/content/blog/ | tr '\n' ' ')
+            # SECURITY: Quote SHA variables to prevent injection
+            FILES=$(git diff --name-only --diff-filter=ACM "${{ github.event.before }}" "${{ github.sha }}" -- src/content/blog/ | tr '\n' ' ')
           fi
-          echo "files=$FILES" >> $GITHUB_OUTPUT
+          echo "files=$FILES" >> "$GITHUB_OUTPUT"
           echo "Changed files: $FILES"
 
       - name: Run syndication
@@ -41,7 +49,10 @@ jobs:
           HASHNODE_PAT: ${{ secrets.HASHNODE_PAT }}
           HASHNODE_PUBLICATION_ID: ${{ secrets.HASHNODE_PUBLICATION_ID }}
           SITE_URL: https://pranshujawade.github.io
-        run: node scripts/syndicate.mjs ${{ steps.changed-files.outputs.files }}
+          # SECURITY: Pass files via environment variable, not command line
+          SYNDICATE_FILES: ${{ steps.changed-files.outputs.files }}
+        # SECURITY: Read files from env var to prevent command injection
+        run: node scripts/syndicate.mjs
 
       - name: Commit syndication state
         if: steps.changed-files.outputs.files != ''

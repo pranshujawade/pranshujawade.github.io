@@ -102,15 +102,17 @@ pre > code {
 }
 
 /* ============================================
-   Links
+   Links (scoped to prose/content areas only)
    ============================================ */
-a {
+.prose a,
+article a:not([class*="bg-"]) {
   color: var(--accent);
   text-decoration: none;
   transition: color 0.15s ease;
 }
 
-a:hover {
+.prose a:hover,
+article a:not([class*="bg-"]):hover {
   color: var(--accent-hover);
 }
 

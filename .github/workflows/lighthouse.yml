@@ -32,7 +32,7 @@ jobs:
 
       - name: Audit with Lighthouse CI
         # SECURITY: Pinned to SHA
-        uses: treosh/lighthouse-ci-action@2dd68ab12619d615e69ce5982eb20be9a6883ae0 # v12
+        uses: treosh/lighthouse-ci-action@fcd65974f7c4c2bf0ee9d09b84d2489183c29726 # v12
         with:
           uploadArtifacts: true
           # SECURITY: Disabled public storage - use GitHub artifacts only
